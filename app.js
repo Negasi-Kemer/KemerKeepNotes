@@ -27,28 +27,28 @@ mongoose
     console.log(`Failed to connect due to ${err}`);
   });
 
- // Get the mongoose connection 
- const dbConnection = mongoose.connection;
+// Get the mongoose connection
+const dbConnection = mongoose.connection;
 
- // Listen to disconnect event and handle error when disconnecting
- dbConnection.on("disconnect", ()=>{
-     console.log("Mongo DB disconnected");
- })
+// Listen to disconnect event and handle error when disconnecting
+dbConnection.on("disconnect", () => {
+  console.log("Mongo DB disconnected");
+});
 
- // Listen to error event and log the error
- dbConnection.on("error", (err)=>{
-     console.log("Error occurred in Mongo DB");
-     console.log(err);
- })
+// Listen to error event and log the error
+dbConnection.on("error", (err) => {
+  console.log("Error occurred in Mongo DB");
+  console.log(err);
+});
 
- // User JSON parser
- app.use(express.json());
+// User JSON parser
+app.use(express.json());
 
- // Require "routes"
- const notesRoutes = require("./notes/routes");
+// Require "routes"
+const notesRoutes = require("./notes/routes");
 
- // Use routes
- app.use("/api/v1/kemernotes/", notesRoutes);
+// Use routes
+app.use("/api/v1/kemernotes/", notesRoutes);
 
 // Listen
 app.listen(port, () => {
